@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="light">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>AQUABRENT Water Refilling Station | Refill Clean, Live Healthy</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #002D62;
+      --secondary: #00A8FF;
+      --accent: #FF6B00;
+      --light-bg: #F0F8FF;
+      --dark-text: #1E293B;
+      --light-text: #64748B;
+    }
+    html { -webkit-text-size-adjust: 100%; }
+    body { font-family: 'Open Sans', sans-serif; color: var(--dark-text); background-color: #FAFCFF; overflow-x: hidden; }
+    img, iframe, svg { max-width: 100%; }
+    h1, h2, h3, h4, h5, .font-heading { font-family: 'Poppins', sans-serif; }
+    
+    /* Top Utility Bar */
+    .top-bar { background: var(--primary); color: #E2E8F0; font-size: 0.85rem; padding: 8px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    .top-bar a { color: #E2E8F0; text-decoration: none; transition: 0.2s; }
+    .top-bar a:hover { color: var(--secondary); }
+    
+    /* Navigation Bar */
+    .main-navbar { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06); transition: all 0.3s ease; }
+    .navbar-brand .logo-title { font-weight: 800; color: var(--primary); font-size: 1.4rem; letter-spacing: -0.5px; }
+    .navbar-brand .logo-title span { color: var(--secondary); }
+    .navbar-brand .logo-sub { font-size: 0.6rem; letter-spacing: 1.2px; color: var(--light-text); font-weight: 600; display: block; margin-top: -3px; }
+    .nav-link { font-weight: 600; color: var(--dark-text) !important; padding: 0.5rem 0.9rem !important; transition: 0.3s; }
+    .nav-link:hover { color: var(--secondary) !important; }
+    
+    /* Buttons & Badges */
+    .btn-gradient { background: linear-gradient(135deg, var(--secondary), #0077B6); color: white; border: none; font-weight: 700; border-radius: 50px; box-shadow: 0 4px 15px rgba(0, 168, 255, 0.3); transition: all 0.3s ease; }
+    .btn-gradient:hover { background: linear-gradient(135deg, #0077B6, var(--primary)); color: white; transform: translateY(-2px); }
+    .btn-accent { background: var(--accent); color: white; border: none; font-weight: 700; border-radius: 50px; box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3); }
+    .btn-accent:hover { background: #E05D00; color: white; }
+    
+    /* Hero Section */
+    .hero-section { background: linear-gradient(135deg, #001A38 0%, #003B73 60%, #0077B6 100%); color: white; padding: 80px 0 110px; position: relative; overflow: hidden; }
+    .hero-badge { background: rgba(0, 168, 255, 0.2); border: 1px solid var(--secondary); color: #E0F2FE; font-weight: 700; padding: 6px 18px; border-radius: 30px; font-size: 0.85rem; display: inline-block; }
+    .hero-title { font-size: clamp(1.75rem, 5.5vw, 3rem); font-weight: 800; line-height: 1.2; }
+    .wave-divider { position: absolute; bottom: 0; left: 0; width: 100%; overflow: hidden; line-height: 0; }
+    .wave-divider svg { position: relative; display: block; width: calc(100% + 1.3px); height: 50px; }
+    .wave-divider .shape-fill { fill: #FAFCFF; }
+    
+    /* Feature Cards */
+    .feat-card { background: white; border-radius: 16px; padding: 22px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #E2E8F0; text-align: center; transition: 0.3s; height: 100%; }
+    .features-wrap { margin-top: -45px; position: relative; z-index: 10; }
+    .feat-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,168,255,0.15); border-color: var(--secondary); }
+    .feat-icon { width: 55px; height: 55px; background: var(--light-bg); color: var(--secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 12px; }
+    
+    /* Calculator Box */
+    .calc-box { background: white; border-radius: 20px; padding: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); border-top: 5px solid var(--secondary); }
+    
+    /* Product Cards */
+    .product-card { background: white; border-radius: 20px; border: 1px solid #E2E8F0; overflow: hidden; transition: all 0.3s ease; height: 100%; display: flex; flex-direction: column; }
+    .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-color: var(--secondary); }
+    .product-header { background: var(--light-bg); padding: 25px; text-align: center; position: relative; }
+    .product-badge { position: absolute; top: 12px; right: 12px; background: var(--primary); color: white; font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
+    .price-tag { font-size: 2.2rem; font-weight: 800; color: var(--primary); }
+    .price-tag span { font-size: 0.9rem; color: var(--light-text); font-weight: 500; }
+    
+    /* Subscriptions */
+    .sub-card { background: white; border-radius: 20px; border: 2px solid #E2E8F0; padding: 28px; transition: 0.3s; position: relative; }
+    .sub-card.popular { border-color: var(--secondary); box-shadow: 0 15px 35px rgba(0, 168, 255, 0.15); }
+    .sub-card.popular::before { content: 'BEST VALUE'; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--secondary); color: white; font-size: 0.75rem; font-weight: 800; padding: 4px 16px; border-radius: 20px; }
+    
+    /* Filtration Step Cards */
+    .stage-step { background: white; border-radius: 12px; padding: 18px; border-left: 4px solid var(--secondary); box-shadow: 0 4px 15px rgba(0,0,0,0.03); margin-bottom: 12px; }
+    
+    /* Mobile Toolbar */
+    .sticky-mobile-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: white; box-shadow: 0 -5px 25px rgba(0,0,0,0.1); z-index: 999; padding: 10px 15px calc(10px + env(safe-area-inset-bottom, 0px)); gap: 8px; }
+    
+    /* Cart Drawer */
+    .cart-drawer { position: fixed; top: 0; right: 0; width: min(400px, 100%); height: 100vh; height: 100dvh; transform: translateX(105%); visibility: hidden; background: white; box-shadow: -10px 0 30px rgba(0,0,0,0.2); z-index: 1050; transition: transform 0.3s ease, visibility 0.3s; padding: 25px; padding-bottom: calc(25px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; }
+    .cart-drawer.active { transform: translateX(0); visibility: visible; }
+    .cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1040; display: none; }
+    .cart-overlay.active { display: block; }
+    
+    /* Custom notice modal (replaces native alert) */
+    .aq-modal { display: none; position: fixed; inset: 0; z-index: 1100; padding: 16px; place-items: center; }
+    .aq-modal.open { display: grid; }
+    .aq-modal__backdrop { position: absolute; inset: 0; background: rgba(0, 20, 45, 0.55); backdrop-filter: blur(3px); animation: aqFade .2s ease; }
+    .aq-modal__card { position: relative; width: 100%; max-width: 400px; max-height: 90vh; max-height: 90dvh; overflow-y: auto; background: #fff; border-radius: 24px; padding: 30px 24px 22px; text-align: center; box-shadow: 0 25px 60px rgba(0, 20, 45, 0.35); animation: aqPop .25s cubic-bezier(.2, .9, .3, 1.2); }
+    .aq-modal__icon { width: 68px; height: 68px; border-radius: 50%; margin: 0 auto 14px; display: flex; align-items: center; justify-content: center; font-size: 1.9rem; }
+    .aq-modal__icon.warning { background: #FFF1E6; color: var(--accent); }
+    .aq-modal__icon.success { background: #E6F9EE; color: #16A34A; }
+    .aq-modal__icon.info { background: var(--light-bg); color: var(--secondary); }
+    .aq-modal__title { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.25rem; color: var(--primary); margin-bottom: 8px; }
+    .aq-modal__body { color: var(--light-text); font-size: 0.95rem; line-height: 1.55; }
+    .aq-summary { text-align: left; background: var(--light-bg); border-radius: 14px; padding: 12px 14px; margin-top: 14px; font-size: 0.85rem; color: var(--dark-text); }
+    .aq-summary .row-line { display: flex; justify-content: space-between; gap: 12px; padding: 3px 0; }
+    .aq-summary .total { border-top: 1px dashed #B6D4EE; margin-top: 6px; padding-top: 8px; font-weight: 700; color: var(--primary); }
+    .aq-summary .meta { margin-top: 8px; padding-top: 8px; border-top: 1px dashed #B6D4EE; color: var(--light-text); word-break: break-word; }
+    .aq-modal__actions { margin-top: 20px; }
+    .aq-modal__actions .btn { width: 100%; padding: 12px; font-size: 1rem; }
+    @keyframes aqPop { from { opacity: 0; transform: translateY(16px) scale(.95); } to { opacity: 1; transform: none; } }
+    @keyframes aqFade { from { opacity: 0; } to { opacity: 1; } }
+    @media (max-width: 575.98px) {
+      .aq-modal { padding: 0; place-items: end center; }
+      .aq-modal__card { max-width: none; border-radius: 26px 26px 0 0; padding: 26px 20px calc(20px + env(safe-area-inset-bottom, 0px)); animation: aqSheet .28s ease; }
+      @keyframes aqSheet { from { transform: translateY(100%); } to { transform: none; } }
+    }
+
+    /* Utilities used in markup but previously undefined */
+    .max-width-700 { max-width: 700px; }
+    .max-width-500 { max-width: 500px; }
+    .fs-7 { font-size: 0.85rem; }
+    .extra-small { font-size: 0.75rem; }
+    .tracking-wider { letter-spacing: 0.08em; }
+    .border-dashed { border: 2px dashed #B6D4EE; }
+    .navbar-brand { max-width: calc(100% - 64px); white-space: normal; }
+    .navbar-brand .logo-title { line-height: 1.1; }
+    .top-bar a { word-break: break-all; }
+    .cart-drawer .btn-close, .navbar-toggler { min-width: 44px; min-height: 44px; }
+
+    /* Tablets and below */
+    @media (max-width: 991.98px) {
+      .hero-section { padding: 56px 0 90px; }
+      .navbar-collapse { padding: 10px 0 14px; }
+      .navbar-nav .nav-item.ms-lg-2 { margin-top: 8px; }
+    }
+
+    /* Phones */
+    @media (max-width: 767.98px) {
+      .sticky-mobile-bar { display: flex; justify-content: space-around; align-items: center; }
+      .sticky-mobile-bar .btn { flex: 1 1 auto; white-space: nowrap; }
+      body { padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)); }
+      .cart-drawer { width: 100%; }
+      .calc-box { padding: 20px; }
+      .sub-card { padding: 22px; }
+      .price-tag { font-size: 1.9rem; }
+      .top-bar { font-size: 0.78rem; }
+      .top-bar .container > .row > div > span { display: block; margin: 0 0 4px !important; }
+      .area-input-group { flex-direction: column; gap: 8px; }
+      .area-input-group > .form-control, .area-input-group > .btn { width: 100%; border-radius: 0.5rem !important; }
+      input, select, textarea, .form-control, .form-select { font-size: 16px !important; } /* stops iOS auto-zoom */
+    }
+
+    /* Small phones */
+    @media (max-width: 400px) {
+      .navbar-brand .logo-title { font-size: 1.05rem; }
+      .navbar-brand .logo-sub { font-size: 0.5rem; letter-spacing: 0.6px; }
+      .hero-badge { font-size: 0.75rem; padding: 5px 12px; }
+      .hero-section .btn-lg { width: 100%; font-size: 1rem; }
+      .feat-card { padding: 16px 10px; }
+      .feat-card h6 { font-size: 0.8rem; }
+    }
+
+    /* Short landscape phones */
+    @media (max-height: 480px) and (orientation: landscape) {
+      .hero-section { padding: 36px 0 70px; }
+      .cart-drawer { padding: 14px; }
+    }
+
+    /* Large screens */
+    @media (min-width: 1600px) {
+      html { font-size: 17px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. TOP ANNOUNCEMENT & UTILITY BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-7 text-center text-md-start">
+          <span class="me-3"><i class="fa-solid fa-clock text-info me-1"></i> Open Daily: 8:00 AM – 7:00 PM</span>
+          <span><i class="fa-solid fa-truck-fast text-warning me-1"></i> FREE Delivery sa Lourdes Village & Bolbok Area</span>
+        </div>
+        <div class="col-md-5 text-center text-md-end mt-2 mt-md-0">
+          <a href="tel:09392382118" class="me-3"><i class="fa-solid fa-phone me-1"></i> 0939-238-2118</a>
+          <a href="mailto:vavinjovy@gmail.com"><i class="fa-solid fa-envelope me-1"></i> jovvenhann28@gmail.com</a>
+        </div> 
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. MAIN NAVIGATION BAR -->
+  <nav class="navbar navbar-expand-lg main-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#home">
+        <div class="bg-primary text-white rounded-circle p-2 me-2 d-flex align-items-center justify-content-center" style="width:40px; height:40px;">
+          <i class="fa-solid fa-droplet fs-4 text-info"></i>
+        </div>
+        <div>
+          <span class="logo-title">AQUABRENT <span>WATER</span></span>
+          <span class="logo-sub">REFILLING STATION - 24 STAGE FILTERS</span>
+        </div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#products">Products & Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="#subscriptions">Packages</a></li>
+          <li class="nav-item"><a class="nav-link" href="#area">Delivery Area</a></li>
+          <li class="nav-item"><a class="nav-link" href="#quality">24-Stage Quality</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+          <li class="nav-item ms-lg-2">
+            <button class="btn btn-gradient px-4 py-2" onclick="openCart()">
+              <i class="fa-solid fa-cart-shopping me-1"></i> Order Now <span class="badge bg-light text-primary ms-1" id="cartCount">0</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 3. HERO SECTION -->
+  <section id="home" class="hero-section">
+    <div class="container position-relative" style="z-index: 2;">
+      <div class="row align-items-center">
+        <div class="col-lg-7 mb-5 mb-lg-0">
+          <span class="hero-badge mb-3"><i class="fa-solid fa-shield-halved me-1"></i> Refill Clean, Live Healthy</span>
+          <h1 class="hero-title mb-3">Clean, Safe & Pure Drinking Water in Batangas City</h1>
+          <p class="lead opacity-90 mb-4 fs-6">
+            Advanced <b>24-Stage Filters</b> & <b>3-in-1 Reverse Osmosis System</b>. Certified DOH & DOST Approved. Malinis, ligtas, at abot-kayang tubig-inumin para sa iyong buong pamilya!
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <button class="btn btn-accent btn-lg px-4" onclick="scrollToProducts()">
+              <i class="fa-solid fa-cart-plus me-2"></i> Order Refill Now
+            </button>
+            <a href="tel:09392382118" class="btn btn-outline-light btn-lg px-4 rounded-pill">
+              <i class="fa-solid fa-phone me-2"></i> Call 0939-238-2118
+            </a>
+          </div>
+          <div class="mt-4 pt-2 d-flex flex-wrap align-items-center gap-2 gap-md-4 text-white-50 fs-7">
+            <div><i class="fa-solid fa-location-dot text-info me-1"></i> Dimacuha Drive St., Lourdes Village, Bolbok</div>
+            <div><i class="fa-solid fa-clock text-warning me-1"></i> Open Daily 8AM - 7PM</div>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="calc-box text-dark">
+            <h4 class="fw-bold text-primary mb-2"><i class="fa-solid fa-calculator me-2"></i>Water Consumption Estimator</h4>
+            <p class="text-muted small mb-3">Kwentahin kung ilang 5-gallon jugs ang kailangan ng pamilya o opisina mo bawat linggo.</p>
+            <div class="mb-3">
+              <label class="form-label fw-bold small">Bilang ng Tao / Consumer:</label>
+              <input type="number" id="calcPeople" class="form-control" value="4" min="1" oninput="calculateWater()">
+            </div>
+            <div class="p-3 bg-light rounded-3 text-center mb-3">
+              <div class="text-muted small">Inirerekomendang Kumuha Bawat Linggo:</div>
+              <div class="display-6 fw-bold text-primary" id="calcResult">2 - 3 Jugs</div>
+              <div class="text-secondary small fw-semibold" id="calcType">Purified Water: ₱50 - ₱75 / week</div>
+            </div>
+            <button class="btn btn-primary w-100 fw-bold rounded-pill" onclick="addCalculatedToCart()">
+              <i class="fa-solid fa-plus-circle me-1"></i> Add Estimated Refills to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wave-divider">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.37,130.83,121.61,192,112,236.08,105.1,280.4,82.3,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- 4. KEY FEATURES BAR -->
+  <div class="container mb-5 features-wrap">
+    <div class="row g-4">
+      <div class="col-md-3 col-6">
+        <div class="feat-card">
+          <div class="feat-icon"><i class="fa-solid fa-filter"></i></div>
+          <h6 class="fw-bold text-primary mb-1">24-STAGE FILTERS</h6>
+          <p class="small text-muted mb-0">Multi-stage purification</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="feat-card">
+          <div class="feat-icon"><i class="fa-solid fa-flask"></i></div>
+          <h6 class="fw-bold text-primary mb-1">3-IN-1 RO SYSTEM</h6>
+          <p class="small text-muted mb-0">Reverse Osmosis Pure</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="feat-card">
+          <div class="feat-icon"><i class="fa-solid fa-certificate"></i></div>
+          <h6 class="fw-bold text-primary mb-1">DOH CERTIFIED</h6>
+          <p class="small text-muted mb-0">Permit WR-2024-1182</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="feat-card">
+          <div class="feat-icon"><i class="fa-solid fa-truck-ram"></i></div>
+          <h6 class="fw-bold text-primary mb-1">FREE DELIVERY</h6>
+          <p class="small text-muted mb-0">Bolbok & Lourdes Area</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. PRODUCTS & PRICING -->
+  <section id="products" class="py-5">
+    <div class="container">
+      <div class="text-center max-width-700 mx-auto mb-5">
+        <span class="text-secondary fw-bold text-uppercase tracking-wider">AQUABRENT Menu</span>
+        <h2 class="fw-bold text-primary">Affordable Water Refill Options</h2>
+        <p class="text-muted">Pumili ng tamang uri ng tubig para sa pangangailangan ng iyong tahanan o negosyo sa Batangas City.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Purified Water -->
+        <div class="col-lg-4 col-md-6">
+          <div class="product-card">
+            <div class="product-header">
+              <span class="product-badge">POPULAR CHOICE</span>
+              <i class="fa-solid fa-glass-water display-4 text-secondary mb-3"></i>
+              <h4 class="fw-bold text-primary mb-1">Purified Water</h4>
+              <p class="text-muted small mb-0">5-Gallon Slim / Round Container</p>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="price-tag mb-3">₱25 <span>/ refill</span></div>
+              <ul class="list-unstyled text-muted small mb-4 flex-grow-1">
+                <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> 24-Stage Filtration Clean</li>
+                <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> 100% Crystal Clear & Safe</li>
+                <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Best for everyday drinking</li>
+              </ul>
+              <button class="btn btn-outline-primary w-100 rounded-pill fw-bold" onclick="addToCart('Purified Water (5-Gallon)', 25)">
+                <i class="fa-solid fa-cart-plus me-1"></i> Add to Order (₱25)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mineral Water -->
+        <div class="col-lg-4 col-md-6">
+          <div class="product-card">
+            <div class="product-header">
+              <span class="product-badge bg-info">HEALTHY CHOICE</span>
+              <i class="fa-solid fa-gem display-4 text-info mb-3"></i>
+              <h4 class="fw-bold text-primary mb-1">Mineral Water</h4>
+              <p class="text-muted small mb-0">5-Gallon Slim / Round Container</p>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="price-tag mb-3">₱28 <span>/ refill</span></div>
+              <ul class="list-unstyled text-muted small mb-4 flex-grow-1">
+                <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Enriched with essential minerals</li>
+                <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Natural refreshing taste</li>
+                <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Recommended for active lifestyle</li>
+              </ul>
+              <button class="btn btn-outline-primary w-100 rounded-pill fw-bold" onclick="addToCart('Mineral Water (5-Gallon)', 28)">
+                <i class="fa-solid fa-cart-plus me-1"></i> Add to Order (₱28)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alkaline Water -->
+        <div class="col-lg-4 col-md-6">
+          <div class="product-card">
+            <div class="product-header">
+              <span class="product-badge bg-warning text-dark">PREMIUM</span>
+              <i class="fa-solid fa-atom display-4 text-warning mb-3"></i>
+              <h4 class="fw-bold text-primary mb-1">Alkaline Water</h4>
+              <p class="text-muted small mb-0">5-Gallon Slim / Round Container</p>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="price-tag mb-3">₱30 <span>/ refill</span></div>
+              <ul class="list-unstyled text-muted small mb-4 flex-grow-1">
+                <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> pH Balanced (8.5 - 9.5 pH)</li>
+                <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> High Antioxidant Properties</li>
+                <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Helps neutralize body acidity</li>
+              </ul>
+              <button class="btn btn-outline-primary w-100 rounded-pill fw-bold" onclick="addToCart('Alkaline Water (5-Gallon)', 30)">
+                <i class="fa-solid fa-cart-plus me-1"></i> Add to Order (₱30)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottle Refill 500ml -->
+        <div class="col-lg-4 col-md-6">
+          <div class="product-card">
+            <div class="product-header">
+              <i class="fa-solid fa-bottle-water display-4 text-primary mb-3"></i>
+              <h4 class="fw-bold text-primary mb-1">Bottle Refill (500ml)</h4>
+              <p class="text-muted small mb-0">Handy Personal Bottle</p>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="price-tag mb-3">₱15 <span>/ bottle</span></div>
+              <p class="text-muted small mb-4">Para sa mga naglalakad, nag-eehersisyo, o kailangan ng baon sa eskwela at trabaho.</p>
+              <button class="btn btn-outline-primary w-100 rounded-pill fw-bold" onclick="addToCart('Bottle Refill (500ml)', 15)">
+                <i class="fa-solid fa-cart-plus me-1"></i> Add to Order (₱15)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- New Jug Deposit -->
+        <div class="col-lg-8 col-md-12">
+          <div class="product-card bg-light border-dashed">
+            <div class="p-4 d-flex flex-column flex-md-row align-items-center justify-content-between h-100">
+              <div class="mb-3 mb-md-0 me-md-3">
+                <span class="badge bg-secondary mb-2">WALANG DALANG JUG?</span>
+                <h4 class="fw-bold text-primary mb-1">New Container Deposit / Purchase</h4>
+                <p class="text-muted small mb-0">Para sa mga bagong customer na walang ipagpapalit na 5-gallon container (Slim or Round Jug with Faucet).</p>
+              </div>
+              <div class="text-center text-md-end">
+                <div class="price-tag mb-2">₱200 <span>/ new jug</span></div>
+                <button class="btn btn-accent rounded-pill fw-bold px-4" onclick="addToCart('New 5-Gallon Container Deposit', 200)">
+                  <i class="fa-solid fa-plus me-1"></i> Add Container (₱200)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. SUBSCRIPTION PACKAGES -->
+  <section id="subscriptions" class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center max-width-700 mx-auto mb-5">
+        <span class="text-secondary fw-bold text-uppercase tracking-wider">MONTHLY PACKAGES</span>
+        <h2 class="fw-bold text-primary">Convenient Home & Office Subscriptions</h2>
+        <p class="text-muted">Mag-subscribe para sa automatic na delivery Linggo-linggo nang walang abala!</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="sub-card h-100">
+            <h4 class="fw-bold text-primary mb-2">Starter Plan</h4>
+            <p class="text-muted small mb-3">Ideal for small families (2-3 persons)</p>
+            <div class="display-6 fw-bold text-primary mb-3">₱350 <span class="fs-6 text-muted fw-normal">/ month</span></div>
+            <ul class="list-unstyled text-muted small mb-4">
+              <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> 12 - 14 Refills per month</li>
+              <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Weekly scheduled delivery</li>
+              <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Free container inspection</li>
+            </ul>
+            <button class="btn btn-outline-primary w-100 rounded-pill fw-bold" onclick="addToCart('Starter Monthly Plan', 350)">Select Starter Plan</button>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="sub-card popular h-100">
+            <h4 class="fw-bold text-primary mb-2">Family Package</h4>
+            <p class="text-muted small mb-3">Best for standard households (4-6 persons)</p>
+            <div class="display-6 fw-bold text-primary mb-3">₱600 <span class="fs-6 text-muted fw-normal">/ month</span></div>
+            <ul class="list-unstyled text-muted small mb-4">
+              <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> 24 - 26 Refills per month</li>
+              <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Priority same-day delivery</li>
+              <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Free jug sanitizer service</li>
+            </ul>
+            <button class="btn btn-gradient w-100 rounded-pill fw-bold" onclick="addToCart('Family Monthly Package', 600)">Select Family Package</button>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="sub-card h-100">
+            <h4 class="fw-bold text-primary mb-2">Commercial / Office</h4>
+            <p class="text-muted small mb-3">For offices, shops, & big households</p>
+            <div class="display-6 fw-bold text-primary mb-3">₱1,100 <span class="fs-6 text-muted fw-normal">/ month</span></div>
+            <ul class="list-unstyled text-muted small mb-4">
+              <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> 45+ Refills per month</li>
+              <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Daily or multi-day dispatch</li>
+              <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Official Receipt & Billing statement</li>
+            </ul>
+            <button class="btn btn-outline-primary w-100 rounded-pill fw-bold" onclick="addToCart('Office Commercial Package', 1100)">Select Commercial Plan</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. SERVICE AREA CHECKER -->
+  <section id="area" class="py-5">
+    <div class="container">
+      <div class="bg-primary text-white rounded-3 p-4 p-md-5 position-relative overflow-hidden">
+        <div class="row align-items-center">
+          <div class="col-lg-7 mb-4 mb-lg-0">
+            <span class="badge bg-info text-dark mb-2">COVERAGE CHECKER</span>
+            <h2 class="fw-bold mb-3">Check Delivery Service sa Batangas City</h2>
+            <p class="opacity-90">Libreng delivery sa Lourdes Village at Bolbok area! Alamin kung abot ang inyong barangay o subdivision.</p>
+            <div class="input-group area-input-group mb-3 max-width-500">
+              <input type="text" id="areaSearchInput" class="form-control form-control-lg" placeholder="Enter Barangay / Subdivision (e.g., Bolbok, Lourdes Village)...">
+              <button class="btn btn-warning fw-bold px-4" onclick="checkDeliveryArea()">Check Area</button>
+            </div>
+            <div id="areaResult" class="fw-bold fs-6 mt-2"></div>
+          </div>
+          <div class="col-lg-5 text-center">
+            <div class="bg-white text-dark p-4 rounded-3 shadow">
+              <i class="fa-solid fa-truck-clock display-4 text-primary mb-3"></i>
+              <h5 class="fw-bold mb-2">Daily Delivery Hours</h5>
+              <p class="text-muted small mb-2"><b>8:00 AM – 7:00 PM (Lunes hanggang Linggo)</b></p>
+              <p class="text-muted small mb-0">Cutoff para sa Same-Day Free Delivery: <b>5:00 PM</b></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. 24-STAGE PURIFICATION PROCESS -->
+  <section id="quality" class="py-5 bg-light">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <span class="text-secondary fw-bold text-uppercase">Trust & Safety Standards</span>
+          <h2 class="fw-bold text-primary mb-3">Our 24-Stage Filtration & 3-in-1 Reverse Osmosis</h2>
+          <p class="text-muted mb-4">
+            Sa <b>AQUABRENT</b>, hindi lang kami basta nagre-refill. Ang bawat patak ay dumadaan sa stringent 24-Stage Purification system upang makasigurong malinis, walang bacteria, at ligtas inumin ng mga bata at matatanda.
+          </p>
+          <div class="stage-step">
+            <h6 class="fw-bold text-primary mb-1">1. Multi-Stage Carbon & Sediment Pre-Filters</h6>
+            <p class="small text-muted mb-0">Tinatanggal ang rust, dumi, chlorine, at masasamang amoy sa tubig.</p>
+          </div>
+          <div class="stage-step">
+            <h6 class="fw-bold text-primary mb-1">2. 3-in-1 Reverse Osmosis (RO) Membrane System</h6>
+            <p class="small text-muted mb-0">Filtration sa 0.0001 micron level para maalis ang microscopic pollutants at heavy metals.</p>
+          </div>
+          <div class="stage-step">
+            <h6 class="fw-bold text-primary mb-1">3. Ultraviolet (UV) Sterilization & Ozone Process</h6>
+            <p class="small text-muted mb-0">Pinapuksa ang 99.9% ng bacteria at virus bago isalin sa inyong container.</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="bg-white p-4 rounded-3 shadow-sm border border-light">
+            <h4 class="fw-bold text-primary mb-3 text-center fs-5"><i class="fa-solid fa-shield-virus text-success me-2"></i>Health & Quality Permits</h4>
+            <ul class="list-group list-group-flush mb-4">
+              <li class="list-group-item d-flex flex-wrap gap-2 justify-content-between align-items-center">
+                <span>DOH Sanitary Permit Number:</span>
+                <span class="badge bg-primary rounded-pill">WR-2024-1182</span>
+              </li>
+              <li class="list-group-item d-flex flex-wrap gap-2 justify-content-between align-items-center">
+                <span>DOST Microbiological Water Test:</span>
+                <span class="badge bg-success rounded-pill">PASSED (100% Pure)</span>
+              </li>
+              <li class="list-group-item d-flex flex-wrap gap-2 justify-content-between align-items-center">
+                <span>Batangas City LGU Health Certificate:</span>
+                <span class="badge bg-info text-dark rounded-pill">ACTIVE & COMPLIANT</span>
+              </li>
+            </ul>
+            <div class="text-center">
+              <img src="https://images.unsplash.com/photo-1548839140-29a749e1cf4d?q=80&w=800" alt="Water Station Refill" class="img-fluid rounded-3 mb-2" style="max-height:220px; object-fit:cover; width:100%;">
+              <p class="small text-muted mb-0">Dimacuha Drive St., Lourdes Village, Bolbok, Batangas City</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. ABOUT US & CONTACT -->
+  <section id="about" class="py-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <span class="text-secondary fw-bold text-uppercase">Tungkol sa AQUABRENT</span>
+          <h2 class="fw-bold text-primary mb-3">Serving Batangas City with Pure & Safe Water</h2>
+          <p class="text-muted">
+            Ang <b>AQUABRENT WATER REFILLING STATION</b> ay matatagpuan sa Dimacuha Drive St., Lourdes Village, Bolbok, Batangas City. Ang aming layunin ay magbigay ng pinakamalinis, pinakaligtas, at pinakamasarap na tubig-inumin gamit ang modernong teknolohiya at sanitarong proseso.
+          </p>
+          <div class="row g-3 mt-2">
+            <div class="col-6">
+              <div class="p-3 bg-light rounded-3 text-center">
+                <i class="fa-solid fa-users display-6 text-primary mb-2"></i>
+                <h6 class="fw-bold mb-0">1,000+ Happy Families</h6>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="p-3 bg-light rounded-3 text-center">
+                <i class="fa-solid fa-thumbs-up display-6 text-primary mb-2"></i>
+                <h6 class="fw-bold mb-0">100% Quality Guaranteed</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="bg-primary text-white p-4 p-md-5 rounded-3">
+            <h3 class="fw-bold mb-4">Contact Us & Direct Order</h3>
+            <p class="mb-2"><i class="fa-solid fa-location-dot text-info me-2"></i> <b>Address:</b> Dimacuha Drive St., Lourdes Village, Bolbok, Batangas City</p>
+            <p class="mb-2"><i class="fa-solid fa-phone text-info me-2"></i> <b>Phone:</b> <a href="tel:09392382118" class="text-white fw-bold">0939-238-2118</a></p>
+            <p class="mb-2"><i class="fa-solid fa-envelope text-info me-2"></i> <b>Email:</b> <a href="mailto:vavinjovy@gmail.com" class="text-white">vavinjovy@gmail.com</a></p>
+            <p class="mb-4"><i class="fa-solid fa-wallet text-info me-2"></i> <b>Payment Accepted:</b> GCash & Cash on Delivery (COD)</p>
+
+            <iframe src="https://www.google.com/maps?q=Bolbok+Batangas+City&z=15&output=embed" style="width:100%; height:clamp(180px, 40vw, 260px); border:0; border-radius:12px;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. FOOTER -->
+  <footer class="bg-dark text-white-50 py-4 fs-7 border-top border-secondary" style="word-break:break-word;">
+    <div class="container text-center">
+      <p class="mb-1 text-white fw-bold">💧 AQUABRENT WATER REFILLING STATION</p>
+      <p class="mb-1">Tagline: <i>Refill Clean, Live Healthy</i> | Dimacuha Drive St., Lourdes Village, Bolbok, Batangas City</p>
+      <p class="mb-0 small text-muted">© 2026 AQUABRENT. 24 Stage Filters | 3in1 Reverse Osmosis System | DOST Approved | DOH Permit No. WR-2024-1182</p>
+    </div>
+  </footer>
+
+  <!-- 11. MOBILE STICKY TOOLBAR -->
+  <div class="sticky-mobile-bar">
+    <button class="btn btn-sm btn-primary rounded-pill px-3" onclick="openCart()">
+      <i class="fa-solid fa-cart-shopping me-1"></i> Order Now
+    </button>
+    <a href="tel:09392382118" class="btn btn-sm btn-success rounded-pill px-3">
+      <i class="fa-solid fa-phone me-1"></i> Call Station
+    </a>
+    <a href="https://www.google.com/maps/search/Dimacuha+Drive+St.+Lourdes+Village+Bolbok+Batangas+City" target="_blank" class="btn btn-sm btn-outline-secondary rounded-pill px-3">
+      <i class="fa-solid fa-map-location-dot me-1"></i> Map
+    </a>
+  </div>
+
+  <!-- 12. SHOPPING CART & POS DRAWER -->
+  <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+      <h5 class="fw-bold text-primary mb-0"><i class="fa-solid fa-basket-shopping me-2"></i> Your Water Order</h5>
+      <button class="btn-close" onclick="closeCart()"></button>
+    </div>
+    
+    <div id="cartItemsContainer" class="flex-grow-1 overflow-auto mb-3">
+      <p class="text-muted text-center mt-5">Wala pang laman ang order cart mo.</p>
+    </div>
+
+    <div class="border-top pt-3">
+      <div class="d-flex justify-content-between fw-bold fs-5 mb-3">
+        <span>Total Amount:</span>
+        <span class="text-primary" id="cartTotal">₱0</span>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label small fw-bold">Manner of Payment:</label>
+        <select id="paymentMethod" class="form-select form-select-sm">
+          <option value="Cash on Delivery (COD)">Cash on Delivery (COD)</option>
+          <option value="GCash (0939-238-2118)">GCash Transfer</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label small fw-bold">Customer Name & Complete Delivery Address:</label>
+        <input type="text" id="custName" class="form-control form-control-sm mb-2" placeholder="Pangalan (e.g. Juan Dela Cruz)">
+        <textarea id="custAddr" class="form-control form-control-sm" rows="2" placeholder="House No., Street, Lourdes Village / Bolbok Area..."></textarea>
+      </div>
+
+      <button class="btn btn-gradient w-100 py-2 fw-bold" onclick="submitOrder()">
+        <i class="fa-solid fa-paper-plane me-1"></i> Confirm & Send Order
+      </button>
+    </div>
+  </div>
+
+  <!-- NOTICE MODAL -->
+  <div class="aq-modal" id="aqModal" role="dialog" aria-modal="true" aria-labelledby="aqModalTitle">
+    <div class="aq-modal__backdrop" onclick="closeModal()"></div>
+    <div class="aq-modal__card">
+      <div class="aq-modal__icon info" id="aqModalIcon"><i class="fa-solid fa-circle-info"></i></div>
+      <h5 class="aq-modal__title" id="aqModalTitle"></h5>
+      <div class="aq-modal__body" id="aqModalBody"></div>
+      <div class="aq-modal__actions">
+        <button type="button" class="btn btn-gradient" id="aqModalBtn" onclick="closeModal()">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Code -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let cart = [];
+
+    function scrollToProducts() {
+      document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function calculateWater() {
+      let people = parseInt(document.getElementById('calcPeople').value) || 1;
+      let minJugs = Math.ceil(people * 0.5);
+      let maxJugs = Math.ceil(people * 0.8);
+      document.getElementById('calcResult').innerText = minJugs + " - " + maxJugs + " Jugs";
+      document.getElementById('calcType').innerText = "Est. Cost (Purified): ₱" + (minJugs * 25) + " - ₱" + (maxJugs * 25) + " / week";
+    }
+
+    function addCalculatedToCart() {
+      let people = parseInt(document.getElementById('calcPeople').value) || 1;
+      let qty = Math.ceil(people * 0.5);
+      addToCart('Purified Water (5-Gallon)', 25, qty);
+      openCart();
+    }
+
+    function addToCart(name, price, qty = 1) {
+      let existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.qty += qty;
+      } else {
+        cart.push({ name: name, price: price, qty: qty });
+      }
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      let totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
+      let totalPrice = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+      
+      document.getElementById('cartCount').innerText = totalQty;
+      document.getElementById('cartTotal').innerText = '₱' + totalPrice;
+
+      let container = document.getElementById('cartItemsContainer');
+      if (cart.length === 0) {
+        container.innerHTML = '<p class="text-muted text-center mt-5">Wala pang laman ang order cart mo.</p>';
+        return;
+      }
+
+      let html = '<div class="list-group list-group-flush">';
+      cart.forEach((item, index) => {
+        html += `
+          <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
+            <div>
+              <div class="fw-bold text-dark small">${item.name}</div>
+              <div class="text-muted extra-small">₱${item.price} x ${item.qty}</div>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <span class="fw-bold text-primary">₱${item.price * item.qty}</span>
+              <button class="btn btn-sm btn-outline-danger py-0 px-2" onclick="removeItem(${index})">&times;</button>
+            </div>
+          </div>
+        `;
+      });
+      html += '</div>';
+      container.innerHTML = html;
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      updateCartUI();
+    }
+
+    function openCart() {
+      document.getElementById('cartDrawer').classList.add('active');
+      document.getElementById('cartOverlay').classList.add('active');
+    }
+
+    function closeCart() {
+      document.getElementById('cartDrawer').classList.remove('active');
+      document.getElementById('cartOverlay').classList.remove('active');
+    }
+
+    function checkDeliveryArea() {
+      let input = document.getElementById('areaSearchInput').value.toLowerCase().trim();
+      let res = document.getElementById('areaResult');
+      if (!input) {
+        res.innerHTML = '<span class="text-warning">Mangyaring mag-type ng barangay o lugar.</span>';
+        return;
+      }
+      if (input.includes('bolbok') || input.includes('lourdes')) {
+        res.innerHTML = '<span class="text-light"><i class="fa-solid fa-circle-check text-warning me-1"></i> COVERED! <b>FREE DELIVERY AVAILABLE</b> para sa lugar ninyo!</span>';
+      } else {
+        res.innerHTML = '<span class="text-light"><i class="fa-solid fa-circle-info text-info me-1"></i> Served area in Batangas City. Minimum order may apply.</span>';
+      }
+    }
+
+    /* ---------- Custom modal ---------- */
+    let modalOnClose = null, modalLastFocus = null;
+    const MODAL_ICONS = { warning: 'fa-triangle-exclamation', success: 'fa-circle-check', info: 'fa-circle-info' };
+
+    function showModal({ type = 'info', icon, title, text = '', node = null, button = 'OK', onClose = null }) {
+      const iconBox = document.getElementById('aqModalIcon');
+      iconBox.className = 'aq-modal__icon ' + type;
+      iconBox.innerHTML = '<i class="fa-solid ' + (icon || MODAL_ICONS[type]) + '"></i>';
+      document.getElementById('aqModalTitle').textContent = title;
+      const body = document.getElementById('aqModalBody');
+      body.textContent = text;
+      if (node) body.appendChild(node);
+      document.getElementById('aqModalBtn').textContent = button;
+      modalOnClose = onClose;
+      modalLastFocus = document.activeElement;
+      document.getElementById('aqModal').classList.add('open');
+      document.getElementById('aqModalBtn').focus();
+    }
+
+    function closeModal() {
+      const m = document.getElementById('aqModal');
+      if (!m.classList.contains('open')) return;
+      m.classList.remove('open');
+      const cb = modalOnClose; modalOnClose = null;
+      if (cb) cb(); else if (modalLastFocus && modalLastFocus.focus) modalLastFocus.focus();
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    ['custName', 'custAddr'].forEach(id =>
+      document.getElementById(id).addEventListener('input', e => e.target.classList.remove('is-invalid')));
+
+    function buildSummary(items, total, pay, name, addr) {
+      const box = document.createElement('div');
+      box.className = 'aq-summary';
+      const line = (l, r, cls) => {
+        const d = document.createElement('div');
+        d.className = 'row-line' + (cls ? ' ' + cls : '');
+        const a = document.createElement('span'), b = document.createElement('span');
+        a.textContent = l; b.textContent = r;
+        d.append(a, b); box.appendChild(d);
+      };
+      items.forEach(i => line(i.qty + ' × ' + i.name, '₱' + (i.price * i.qty)));
+      line('Total', '₱' + total, 'total');
+      const meta = document.createElement('div');
+      meta.className = 'meta';
+      meta.textContent = pay + ' • ' + name + ' • ' + addr;
+      box.appendChild(meta);
+      return box;
+    }
+
+    function submitOrder() {
+      const nameEl = document.getElementById('custName');
+      const addrEl = document.getElementById('custAddr');
+      nameEl.classList.remove('is-invalid'); addrEl.classList.remove('is-invalid');
+
+      if (cart.length === 0) {
+        showModal({
+          type: 'warning', icon: 'fa-cart-shopping',
+          title: 'Wala pang laman ang cart',
+          text: 'Pumili muna ng tubig o package na ii-order.',
+          button: 'Mamili ng Tubig',
+          onClose: () => { closeCart(); scrollToProducts(); }
+        });
+        return;
+      }
+
+      const name = nameEl.value.trim(), addr = addrEl.value.trim();
+      if (!name || !addr) {
+        if (!name) nameEl.classList.add('is-invalid');
+        if (!addr) addrEl.classList.add('is-invalid');
+        showModal({
+          type: 'warning', icon: 'fa-user-pen',
+          title: 'Kulang pa ang detalye',
+          text: 'Paki-fill up ang iyong Pangalan at Complete Delivery Address.',
+          button: 'Sige, kukumpletuhin ko',
+          onClose: () => (!name ? nameEl : addrEl).focus()
+        });
+        return;
+      }
+
+      const pay = document.getElementById('paymentMethod').value;
+      const items = cart.slice();
+      const total = items.reduce((sum, i) => sum + i.price * i.qty, 0);
+      cart = [];
+      updateCartUI();
+      closeCart();
+      showModal({
+        type: 'success',
+        title: 'Salamat sa order, ' + name + '!',
+        text: 'Natanggap na ng AQUABRENT ang iyong order. Papunta na ang aming rider.',
+        node: buildSummary(items, total, pay, name, addr),
+        button: 'Tapos na'
+      });
+    }
+  </script>
+</body>
+</html>
