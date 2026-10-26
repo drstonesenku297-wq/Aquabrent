@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8">
   <meta name="color-scheme" content="light">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -8,6 +9,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  
   <style>
     :root {
       --primary: #002D62;
@@ -42,6 +44,75 @@
     .btn-accent:hover { background: #E05D00; color: white; }
     
     /* Hero Section */
+	
+	.video-section {
+  padding: 60px 20px;
+  background: #f0f9ff;
+  text-align: center;
+}
+
+.video-container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.video-container h2 {
+  font-size: 36px;
+  color: #0077b6;
+  margin-bottom: 10px;
+}
+
+.video-container p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.video-container video {
+  width: 100%;
+  max-width: 850px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  display: block;
+  margin: 0 auto 30px;
+}
+
+.video-button {
+  display: inline-block;
+  padding: 14px 30px;
+  background: #0077b6;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-size: 17px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.video-button:hover {
+  background: #005f8f;
+  transform: translateY(-2px);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .video-section {
+    padding: 40px 15px;
+  }
+
+  .video-container h2 {
+    font-size: 28px;
+  }
+
+  .video-container p {
+    font-size: 16px;
+  }
+
+  .video-container video {
+    border-radius: 12px;
+  }
+}
+
     .hero-section { background: linear-gradient(135deg, #001A38 0%, #003B73 60%, #0077B6 100%); color: white; padding: 80px 0 110px; position: relative; overflow: hidden; }
     .hero-badge { background: rgba(0, 168, 255, 0.2); border: 1px solid var(--secondary); color: #E0F2FE; font-weight: 700; padding: 6px 18px; border-radius: 30px; font-size: 0.85rem; display: inline-block; }
     .hero-title { font-size: clamp(1.75rem, 5.5vw, 3rem); font-weight: 800; line-height: 1.2; }
@@ -167,6 +238,7 @@
     @media (prefers-reduced-motion: reduce) {
       * { transition: none !important; scroll-behavior: auto !important; }
     }
+	
   </style>
 </head>
 <body>
@@ -263,6 +335,23 @@
         </div>
       </div>
     </div>
+	
+	
+
+	<section class="video-section">
+  <div class="video-container">
+    <h2>AQUABRENT Water Refilling Station</h2>
+    <p>Clean, safe, and affordable drinking water delivered to your home.</p>
+
+    <video controls autoplay muted loop playsinline>
+      <source src="Aquabrent.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+
+    <a href="#contact" class="video-button">Order Now</a>
+  </div>
+</section>
+
     <div class="wave-divider">
       <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
         <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.37,130.83,121.61,192,112,236.08,105.1,280.4,82.3,321.39,56.44Z" class="shape-fill"></path>
@@ -271,6 +360,7 @@
   </section>
 
   <!-- 4. KEY FEATURES BAR -->
+  
   <div class="container mb-5 features-wrap">
     <div class="row g-4">
       <div class="col-md-3 col-6">
